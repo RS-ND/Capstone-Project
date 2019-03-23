@@ -1,8 +1,6 @@
 # Capstone-Project
 ### Udacity DataScience ND: Capstone
 
-# Write-a-Data-Science-Blog-Post
-
 
 Summary
 
