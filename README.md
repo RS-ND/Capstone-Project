@@ -1,4 +1,4 @@
-# Capstone-Project
+# Neural Networks in Fitting Data: Application to DEER Data
 ### Udacity DataScience ND: Capstone
 
 
