@@ -1,0 +1,46 @@
+{% extends "master.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <h2 class="text-center">Fitting DEER data with Convolutional Networks</h2>
+        <p class="text-center">Home Page</p>
+        <hr />
+</div>
+
+
+
+
+
+
+<div class="container">
+    <div class="col-sm-3">
+       <a href=".\Deer_CNN.pdf" class="text-success"><p>Deer_CNN</p></a>
+    </div>
+    <div class="col-sm-9">
+       <p>The link to the left opens a PDF file with background on the problem of fitting Deer data and the use of convolutional neural network for fitting data.</p>
+    </div>
+    <div class="col-sm-3">
+       <a href="sim_setup" class="text-success"><p>Run Simulation</p></a>
+    </div>
+    <div class="col-sm-9">
+       <p>Are you unfamiliar with what Deer data looks like and how it relates to a probability distance distribution? If not this section will allow you to create a distance distribution composed of up to two Gaussian distributions. This distribution will then be used to simulate a Deer decay.</p>
+    </div>
+    <div class="col-sm-3">
+       <a href="train_setup" class="text-success"><p>Explore Training Data</p></a>
+    </div>
+    <div class="col-sm-9">
+       <p>This section allows for random selection of 1 of the 30,000 curve training data set. It will compare the results for the four different models used in this exercise.</p>
+    </div>
+    <div class="col-sm-3">
+       <p>Fit</p>
+    </div>
+    <div class="col-sm-9">
+       <p>This is a more direct method of looking at the usefulness of fitting data with a convolutional neural network. Create a simulated distance distribution and see how well model 2B is able to reproduce the input distance distribution. Due to the size of the model and loading times into the browser this examination is implemented in a Jupyter notebook, 'XX'. It is available at the <a href="https://github.com/RS-ND/Capstone-Project.git">repository</a>.</p>
+    </div>
+</div>
+
+
+
+{% endblock %}

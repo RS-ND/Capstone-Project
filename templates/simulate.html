@@ -1,0 +1,80 @@
+{% extends "master.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <h2 class="text-center">Fitting DEER data with Convolutional Networks</h2>
+        <p class="text-center">Simulations</p>
+        <hr />
+
+<form action="sim_run" method="get">
+
+<div class="row">
+    <div class="col-sm-3">    </div>
+    <div class="col-sm-2">
+       <p class="text-center">Amplitude</p>
+    </div>
+    <div class="col-sm-2">
+       <p class="text-center">Center</p>
+    </div>
+    <div class="col-sm-2">
+       <p class="text-center">Width</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">    </div>
+    <div class="col-sm-2">
+        <input type="number" step="0.1" class="form-control" id="amp1" name="amp1" value={{amp1}}>
+    </div>
+    <div class="col-sm-2">
+        <input type="number" step="0.1" class="form-control" id="cen1" name="cen1" value={{cen1}}>
+    </div>
+    <div class="col-sm-2">
+        <input type="number" step="0.01" class="form-control" id="wid1" name="wid1" value={{wid1}}>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">    </div>
+    <div class="col-sm-2">
+        <input type="number" step="0.1" class="form-control" id="amp2" name="amp2" value={{amp2}}>
+    </div>
+    <div class="col-sm-2">
+        <input type="number" step="0.1" class="form-control" id="cen2" name="cen2" value={{cen2}}>
+    </div>
+    <div class="col-sm-2">
+        <input type="number" step="0.01" class="form-control" id="wid2" name="wid2" value={{wid2}}>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-8">    </div>
+    <button type="submit" class="btn btn-success">Simulate</button>
+</div>
+
+</form>
+
+    </div>
+</div>
+
+<div class="container">
+        <div class="page-header">
+            <h1 class="text-center">Simulation</h1>
+        </div>
+
+    {% for id in ids %}
+        <div id="{{id}}"></div>
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+    const graphs = {{graphJSON | safe}};
+    const ids = {{ids | safe}};
+    for(let i in graphs) {
+        Plotly.plot(ids[i], graphs[i].data, graphs[i].layout) ;
+    }
+</script>
+
+{% endblock %}
