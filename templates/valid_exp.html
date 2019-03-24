@@ -1,0 +1,81 @@
+{% extends "master.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <h2 class="text-center">Fitting DEER data with Convolutional Networks</h2>
+        <p class="text-center">Examining Validation Results</p>
+        <hr />
+
+        <div class="row justify-content-center">
+            <div class="col-lg-3 form-group-lg">
+            </div>
+            <div class="col-lg-6 form-group-lg">
+                <form action="valid" method="get">
+                    <input type="text" class="form-control form-control-lg" name="query" placeholder="Enter number between 1-10000 to see results">
+                    <div class="col-lg-offset-5">
+                        <button type="submit" class="btn btn-lg btn-success">GO</button>
+                    </div>
+                </form>
+            </div>
+<div class="col-lg-1">
+</div>
+<div class="col-lg-1">
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th scope="col">ranking</th>
+      <th scope="col" class="text-right">1A</th>
+      <th scope="col" class="text-right">1B</th>
+      <th scope="col" class="text-right">2A</th>
+      <th scope="col" class="text-right">2B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">best</th>
+      <td class="text-right"><a href="valid?query=4599">4599</a></td>
+      <td class="text-right"><a href="valid?query=4982">4982</a></td>
+      <td class="text-right"><a href="valid?query=2983">2983</a></td>
+      <td class="text-right"><a href="valid?query=2263">2263</a></td>
+    </tr>
+    <tr>
+      <th scope="row">worst</th>
+      <td class="text-right"><a href="valid?query=1721">1721</a></td>
+      <td class="text-right"><a href="valid?query=3224">3224</a></td>
+      <td class="text-right"><a href="valid?query=8709">8709</a></td>
+      <td class="text-right"><a href="valid?query=7307">7307</a></td>
+    </tr>
+    <tr>
+      <th scope="row">95<sup>th</sup> percentile</th>
+      <td class="text-right"><a href="valid?query=7968">7968</a></td>
+      <td class="text-right"><a href="valid?query=7906">7906</a></td>
+      <td class="text-right"><a href="valid?query=2928">2928</a></td>
+      <td class="text-right"><a href="valid?query=4316">4316</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+        <div class="page-header">
+            <h1 class="text-center">Validation Results</h1>
+        </div>
+    {% for id in ids %}
+        <div id="{{id}}"></div>
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+    const graphs = {{graphJSON | safe}};
+    const ids = {{ids | safe}};
+    for(let i in graphs) {
+        Plotly.plot(ids[i], graphs[i].data, graphs[i].layout) ;
+    }
+</script>
+
+{% endblock %}

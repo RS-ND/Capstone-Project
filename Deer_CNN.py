@@ -1,15 +1,11 @@
 import json
 import plotly
 import numpy as np
-import torch.nn as nn
-from torch import FloatTensor
-from torch import load
-from torch import from_numpy
 from scipy.special import fresnel
 from scipy.stats import norm
 
 from flask import Flask
-from flask import render_template, request 
+from flask import render_template, request, send_file 
 from plotly.graph_objs import Scatter
 from plotly import tools
 
@@ -50,22 +46,28 @@ cen2 = 35.0
 wid2 = 3.0
 
 
-def load_data(idx=1):
-    """Read in B1 data from the directory Data\B.
+def load_data(data_type='tr',idx=1):
+    """Read in data from the appropriate directory.
 
     Keyword argument:
-    idx -- the number of the training data set to read in
+    data_type -- whether to get training or validation data
+    idx -- the number of the training or validation data set to read in
     
     Returns:
     The distance and deer data used in training and
     the four simulations termed 1A, 1B, 2A, and 2B.    
     """    
-    deer = np.genfromtxt(r'.\Data\B\B1_deer_{:05.0f}.dat'.format(idx),delimiter=',')
-    dist = np.genfromtxt(r'.\Data\B\B1_dist_{:05.0f}.dat'.format(idx),delimiter=',')
-    sim1A = np.genfromtxt(r'.\Data\B\B1_sim1A_{:05.0f}.dat'.format(idx),delimiter=',')
-    sim1B = np.genfromtxt(r'.\Data\B\B1_sim1B_{:05.0f}.dat'.format(idx),delimiter=',')
-    sim2A = np.genfromtxt(r'.\Data\B\B1_sim2A_{:05.0f}.dat'.format(idx),delimiter=',')
-    sim2B = np.genfromtxt(r'.\Data\B\B1_sim2B_{:05.0f}.dat'.format(idx),delimiter=',')
+    if data_type == 'tr':
+        data_dir = 'train'
+    else:
+        data_dir = 'valid'
+        data_type = 'va'
+    deer = np.genfromtxt(r'.\Data\{}\{}_deer_{:05.0f}.dat'.format(data_dir,data_type,idx),delimiter=',')
+    dist = np.genfromtxt(r'.\Data\{}\{}_dist_{:05.0f}.dat'.format(data_dir,data_type,idx),delimiter=',')
+    sim1A = np.genfromtxt(r'.\Data\{}\{}_sim1A_{:05.0f}.dat'.format(data_dir,data_type,idx),delimiter=',')
+    sim1B = np.genfromtxt(r'.\Data\{}\{}_sim1B_{:05.0f}.dat'.format(data_dir,data_type,idx),delimiter=',')
+    sim2A = np.genfromtxt(r'.\Data\{}\{}_sim2A_{:05.0f}.dat'.format(data_dir,data_type,idx),delimiter=',')
+    sim2B = np.genfromtxt(r'.\Data\{}\{}_sim2B_{:05.0f}.dat'.format(data_dir,data_type,idx),delimiter=',')
     
     return deer,dist,sim1A,sim1B,sim2A,sim2B
 
@@ -205,7 +207,7 @@ def index():
 @app.route('/train_setup')
 def train_setup():
     # load data
-    deer,dist,sim1A,sim1B,sim2A,sim2B = load_data(24956)
+    deer,dist,sim1A,sim1B,sim2A,sim2B = load_data('tr',24956)
     ids, graphJSON = plots('train_exp',deer,dist,sim1A,sim1B,sim2A,sim2B)
 
     return render_template('train_exp.html', ids=ids, graphJSON=graphJSON)
@@ -224,7 +226,7 @@ def train():
     query = int(query)
     if abs(query) > 30000 or query == 0:
         query = 24956
-    deer,dist,sim1A,sim1B,sim2A,sim2B = load_data(query)
+    deer,dist,sim1A,sim1B,sim2A,sim2B = load_data('tr',query)
     ids, graphJSON = plots('train_exp',deer,dist,sim1A,sim1B,sim2A,sim2B)
 
     return render_template('train_exp.html', ids=ids, graphJSON=graphJSON)
@@ -264,10 +266,39 @@ def sim_run():
     return render_template('simulate.html', ids=ids, graphJSON=graphJSON,
                            amp1=amp1, cen1=cen1, wid1=wid1,
                            amp2=amp2, cen2=cen2, wid2=wid2)
-   
+
+
+# runs the initial page for the validation examples page
+@app.route('/valid_setup')
+def valid_setup():
+    # load data
+    deer,dist,sim1A,sim1B,sim2A,sim2B = load_data('va',4599)
+    ids, graphJSON = plots('train_exp',deer,dist,sim1A,sim1B,sim2A,sim2B)
+
+    return render_template('valid_exp.html', ids=ids, graphJSON=graphJSON)
+
+
+# runs the validation examples page
+@app.route('/valid')
+def valid():
+    # load data
+    # save user input in query
+    query = request.args.get('query', '')
+    try:
+        int(query)
+    except:
+        query = 4599
+    query = int(query)
+    if abs(query) > 10000 or query == 0:
+        query = 4599
+    deer,dist,sim1A,sim1B,sim2A,sim2B = load_data('va',query)
+    ids, graphJSON = plots('train_exp',deer,dist,sim1A,sim1B,sim2A,sim2B)
+
+    return render_template('valid_exp.html', ids=ids, graphJSON=graphJSON)
+
 
 def main():
-    app.run(host='0.0.0.0', port=3001, debug=True)
+    app.run(host='0.0.0.0', port=3001, debug=False)
 
 
 if __name__ == '__main__':
