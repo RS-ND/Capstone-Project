@@ -18,10 +18,10 @@ Dashboard/Python Files
   * Both the models and data directories should be placed in the folder where Deer_CNN.ipynb is located
     * Both the training and validation data needs to be unzipped in folders named train and valid, respectively.
 
-    This Dashboard:
-        Has an overview of the project
-        Allows for exploration of the relationship between a distance distribution and a deer trace
-        Several explorations of the results of the CNNs.
+This Dashboard:
+* __Has an overview of the project__
+* __Allows for exploration of the relationship between a distance distribution and a deer trace__
+* __Several explorations of the results of the CNNs__
 
 
 Jupyter Notebook (ipynb) 
