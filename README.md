@@ -12,20 +12,22 @@ Summary
 Dashboard/Python Files 
 > __Deer_CNN.py: run at command line and in a web browser open "localhost:3001"__
 
+* Requires both the templates and static folders to be in the directory containing Deer_CNN.py
+
+* Requires data hosted at: https://drive.google.com/open?id=1twFOE14AvB7hkQ6_hxlw2PNr8zUtcF3g (slow download)
+  * Both the models and data directories should be placed in the folder where Deer_CNN.ipynb is located
+    * The both the training and validation data needs to be unzipped in folders named train and valid, respectively.
+
     This Dashboard:
         Has an overview of the project
         Allows for exploration of the relationship between a distance distribution and a deer trace
         Several explorations of the results of the CNNs.
-          
-* Requires both the templates and static folders to be in the directory containing Deer_CNN.py
-          
+
 
 Jupyter Notebook (ipynb) 
 > __Deer_CNN.ipynb__
 
-* Requires data hosted at: https://drive.google.com/open?id=1twFOE14AvB7hkQ6_hxlw2PNr8zUtcF3g
-  * Both the models and data directories should be placed in the folder where Deer_CNN.ipynb is located
-    * The both the training and validation data needs to be unzipped.
+* Requires models_load.py
 
 
 HTML file
