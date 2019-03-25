@@ -9,7 +9,7 @@ Summary
 [Write UP](./static/Deer_CNN.pdf) (also available using the Dashboard)
 
 
-Dashboard/Python Files 
+Dashboard/Python Files (**__WebApp__**)
 > __Deer_CNN.py: run at command line and in a web browser open "localhost:3001"__
 
 * Requires both the templates and static folders to be in the directory containing Deer_CNN.py
