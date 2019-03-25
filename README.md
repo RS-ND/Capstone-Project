@@ -16,7 +16,7 @@ Dashboard/Python Files
 
 * Requires data hosted at: https://drive.google.com/open?id=1twFOE14AvB7hkQ6_hxlw2PNr8zUtcF3g (slow download)
   * Both the models and data directories should be placed in the folder where Deer_CNN.ipynb is located
-    * The both the training and validation data needs to be unzipped in folders named train and valid, respectively.
+    * Both the training and validation data needs to be unzipped in folders named train and valid, respectively.
 
     This Dashboard:
         Has an overview of the project
