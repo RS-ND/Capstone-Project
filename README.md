@@ -17,16 +17,14 @@ paraphrasing from https://pytorch.org/docs/stable/nn.html : mse = &#931; (target
 * The use of simulated data alleviated issues that is presented by real data.
 
 <table>
-   <tr>
-    <td colspan="9">Mse</td>
-  </tr>
-  <tr>
-    <td>One</td>
-    <td>Two</td>
-  </tr>
-  <tr>
-    <td colspan="2">Three</td>
-  </tr>
+   <tr> <td colspan<td colspan="9">Training/Validation Statistics</td>  </tr>
+   <tr> <td>Model</td> <td colspan="2">1A</td> <td colspan="2">1B</td> <td colspan="2">2A</td> <td colspan="2">2B</td> </tr>
+   <tr> <td></td> <td>training</td> <td>validation</td> <td>training</td> <td>validation</td> <td>training</td> <td>validation</td> <td>training</td> <td>validation</td> </tr>
+   <tr> <td>mean</td> <td>1.79e-6</td> <td>1.62e-6</td> <td>1.89e-6</td> <td>1.73e-6</td> <td>1.74e-6</td> <td>1.52e-6</td> <td>9.58e-7</td> <td>1.27e-6</td> </tr>
+   <tr> <td>median</td> <td>4.53e-7</td> <td>5.74e-7</td> <td>5.31e-6</td> <td>6.74e-7</td> <td>3.99e-7</td> <td>5.13e-7</td> <td>2.23e-7</td> <td>3.80e-7</td> </tr>
+   <tr> <td>95<sup>th</sup> percentile</td> <td>8.54e-6</td> <td>6.90e-6</td> <td>8.80e-6</td> <td>7.02e-6</td> <td>8.43e-6</td> <td>6.62e-6</td> <td>4.26e-6</td> <td>5.70e-6</td> </tr>
+   <tr> <td>minimum</td> <td>1.76e-8</td> <td>1.82e-8</td> <td>2.26e-8</td> <td>2.83e-8</td> <td>1.09e-8</td> <td>1.43e-8</td> <td>6.02e-9</td> <td>7.23e-9</td> </tr>
+   <tr> <td>maximum</td> <td>6.21e-5</td> <td>5.10e-5</td> <td>6.23e-5</td> <td>3.42e-5</td> <td>6.37e-5</td> <td>3.52e-5</td> <td>6.01e-5</td> <td>8.76e-5</td> </tr>
 </table>
 
 * These are the plots for the data that is closest to the 95th percentile for model 1B. More figures are in the [write UP](./static/Deer_CNN.pdf) and in the Dashboard
