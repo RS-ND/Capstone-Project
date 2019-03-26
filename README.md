@@ -10,12 +10,23 @@
 * Vary the CNN components until adequate fitting is accomplished.
 ### Metrics
 * For comparing the predicted curve to the target curve a mean-squared error (mse) loss function is used.
+
+from https://pytorch.org/docs/stable/nn.html :
+The loss can be described as: 
+
+\[\ell(x, y) = L = \{l_1,\dots,l_N\}^\top, \quad
+l_n = \left| x_n - y_n \right|,
+\]
 * The mean, median, and 95<sup>th</sup> percentile values of the mse are used to compare models.
 
 ## Analysis
 * The use of simulated data alleviated issues that is presented by real data.
+table of stata
 * These are the plots for the data that is closest to the 95th percentile for model 1B. More figures are in the [write UP](./static/Deer_CNN.pdf) and in the Dashboard
 ![Plot of the 95th percentile for model 1B and how the rest of the models worked](https://github.com/RS-ND/Capstone-Project/blob/master/images/1B_95.png)
+
+## Methodology
+* The complete data trace with its various oscillations are considered one feature. This simulated data does not require any processing steps including feature selection.
 
 ## Conclusion
 ### Reflection
