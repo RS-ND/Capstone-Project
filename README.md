@@ -17,8 +17,8 @@ paraphrasing from https://pytorch.org/docs/stable/nn.html : mse = &#931; (target
 * The use of simulated data alleviated issues that is presented by real data.
 * Below are the statistics for four models tested.
 <table>
-   <tr> <td colspan<td colspan="9">Training/Validation Statistics</td>  </tr>
-   <tr> <td>Model</td> <td colspan="2">1A</td> <td colspan="2">1B</td> <td colspan="2">2A</td> <td colspan="2">2B</td> </tr>
+   <tr> <td colspan<td colspan="9" align="center">Training/Validation Statistics</td>  </tr>
+   <tr> <td>Model</td> <td colspan="2" align="center">1A</td> <td colspan="2" align="center">1B</td> <td colspan="2" align="center">2A</td> <td colspan="2" align="center">2B</td> </tr>
    <tr> <td></td> <td>training</td> <td>validation</td> <td>training</td> <td>validation</td> <td>training</td> <td>validation</td> <td>training</td> <td>validation</td> </tr>
    <tr> <td>mean</td> <td>1.79e-6</td> <td>1.62e-6</td> <td>1.89e-6</td> <td>1.73e-6</td> <td>1.74e-6</td> <td>1.52e-6</td> <td>9.58e-7</td> <td>1.27e-6</td> </tr>
    <tr> <td>median</td> <td>4.53e-7</td> <td>5.74e-7</td> <td>5.31e-6</td> <td>6.74e-7</td> <td>3.99e-7</td> <td>5.13e-7</td> <td>2.23e-7</td> <td>3.80e-7</td> </tr>
