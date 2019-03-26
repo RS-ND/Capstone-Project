@@ -15,7 +15,7 @@ paraphrasing from https://pytorch.org/docs/stable/nn.html : mse = &#931; (target
 
 ## Analysis
 * The use of simulated data alleviated issues that is presented by real data.
-
+* Below are the statistics for four models tested.
 <table>
    <tr> <td colspan<td colspan="9">Training/Validation Statistics</td>  </tr>
    <tr> <td>Model</td> <td colspan="2">1A</td> <td colspan="2">1B</td> <td colspan="2">2A</td> <td colspan="2">2B</td> </tr>
@@ -31,7 +31,7 @@ paraphrasing from https://pytorch.org/docs/stable/nn.html : mse = &#931; (target
 ![Plot of the 95th percentile for model 1B and how the rest of the models worked](https://github.com/RS-ND/Capstone-Project/blob/master/images/1B_95.png)
 
 ## Methodology
-* The complete data trace with its various oscillations are considered one feature. This simulated data does not require any processing steps including feature selection.
+* The complete data trace with its various oscillations are considered one feature. This simulated data does not require any processing steps.
 
 ## Conclusion
 ### Reflection
